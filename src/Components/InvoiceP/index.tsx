@@ -6,7 +6,7 @@ type Props={
     invoiceProp : InvoiceDTO;
 }
 
-export default function Invoice( {invoiceProp} :Props){
+export default function InvoiceP( {invoiceProp} :Props){
    return(
     <>
         <h1>{invoiceProp.name}</h1>
