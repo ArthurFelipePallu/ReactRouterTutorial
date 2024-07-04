@@ -1,7 +1,7 @@
-main{
+.invoice-index{
     padding: 1rem;
 }
-p{
+.invoice-index-p{
     font-size: large;
     color: coral;
 }

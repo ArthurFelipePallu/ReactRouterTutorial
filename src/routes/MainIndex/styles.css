@@ -1,0 +1,14 @@
+
+
+.main-index{
+    width: 100%;
+    display: flex;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    justify-content: center;
+}
+
+.main-index-p{
+    font-size: xx-large;
+    color: blueviolet;
+    font-weight: bold;
+}
