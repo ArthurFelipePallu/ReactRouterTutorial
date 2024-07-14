@@ -1,6 +1,7 @@
-import { NavLink, Outlet, useSearchParams } from "react-router-dom";
+import { Outlet, useSearchParams } from "react-router-dom";
 import { getInvoices } from "../../data";
 import "./styles.css";
+import QueryLink from "../../Components/QueryLink/Index";
 
 export default function Invoices() {
   const invoices = getInvoices();
@@ -15,36 +16,34 @@ export default function Invoices() {
         }}
       >
         <input
-            value={searchParam.get("param") || ""}
-            onChange={ (event)=> {
-                    let param = event.target.value;
-                    if(param){
-                        setSearchParams({param});
-                    }
-                    else{
-                        setSearchParams({});
-                    }
-                }
+          value={searchParam.get("param") || ""}
+          onChange={(event) => {
+            let param = event.target.value;
+            if (param) {
+              setSearchParams({ param });
+            } else {
+              setSearchParams({});
             }
+          }}
         />
         {invoices
-        .filter((invoice)=>{
+          .filter((invoice) => {
             let param = searchParam.get("param");
-            if(!param) return true;
+            if (!param) return true;
             let name = invoice.name.toLowerCase();
             return name.startsWith(param.toLowerCase());
-        })
-        .map((invoice) => (
-          <NavLink
-            className={({ isActive }) =>
-              isActive ? "nav-block nav-red" : "nav-block nav-blue"
-            }
-            to={`/invoices/${invoice.number}`}
-            key={invoice.number}
-          >
-            {invoice.name}
-          </NavLink>
-        ))}
+          })
+          .map((invoice) => (
+            <QueryLink
+              className={({ isActive } : any) =>
+                isActive ? "nav-block nav-red" : "nav-block nav-blue"
+              }
+              to={`/invoices/${invoice.number}`}
+              key={invoice.number}
+            >
+              {invoice.name}
+            </QueryLink>
+          ))}
       </nav>
       <Outlet />
     </div>
